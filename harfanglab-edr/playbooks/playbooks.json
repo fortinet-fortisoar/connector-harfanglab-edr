@@ -1,0 +1,758 @@
+{
+  "type": "workflow_collections",
+  "data": [
+    {
+      "@type": "WorkflowCollection",
+      "name": "Sample - HarfangLab EDR - 1.0.0",
+      "description": null,
+      "visible": true,
+      "image": null,
+      "uuid": "2d2435e8-8a42-4bd9-9130-ea496b906ad8",
+      "id": 62,
+      "deletedAt": null,
+      "importedBy": [],
+      "recordTags": [],
+      "workflows": [
+        {
+          "@type": "Workflow",
+          "triggerLimit": null,
+          "name": "Fetch Security events",
+          "aliasName": null,
+          "tag": "#Jira",
+          "description": "Fetches events based on input filters",
+          "isActive": false,
+          "debug": false,
+          "singleRecordExecution": false,
+          "remoteExecutableFlag": false,
+          "parameters": [],
+          "synchronous": false,
+          "lastModifyDate": 1691136022,
+          "collection": "/api/3/workflow_collections/2d2435e8-8a42-4bd9-9130-ea496b906ad8",
+          "versions": [],
+          "triggerStep": "/api/3/workflow_steps/949d8326-d5d8-4f84-b270-dbbb98d44673",
+          "steps": [
+            {
+              "@type": "WorkflowStep",
+              "name": "Incidents",
+              "description": null,
+              "arguments": {
+                "route": "aae3e01d-1045-4ce6-9f2e-9d8bda88bd00",
+                "title": "Jira: Add Comment",
+                "resources": [
+                  "incidents"
+                ],
+                "inputVariables": [],
+                "step_variables": {
+                  "input": {
+                    "params": [],
+                    "records": "{{vars.input.records}}"
+                  }
+                },
+                "displayConditions": {
+                  "incidents": {
+                    "sort": [],
+                    "limit": 30,
+                    "logic": "AND",
+                    "filters": []
+                  }
+                },
+                "executeButtonText": "Execute",
+                "noRecordExecution": true,
+                "singleRecordExecution": false
+              },
+              "status": null,
+              "top": "30",
+              "left": "125",
+              "stepType": "/api/3/workflow_step_types/f414d039-bb0d-4e59-9c39-a8f1e880b18a",
+              "group": null,
+              "uuid": "949d8326-d5d8-4f84-b270-dbbb98d44673"
+            },
+            {
+              "@type": "WorkflowStep",
+              "name": "Fetch Security Events",
+              "description": null,
+              "arguments": {
+                "name": "HarfangLab EDR",
+                "config": "a0bd6760-7a99-48e2-acec-aaf422c8d707",
+                "params": {
+                  "param@delay": 0,
+                  "param@max_fetch": 10,
+                  "param@alert_type": "",
+                  "param@first_fetch": 10,
+                  "param@alert_status": "",
+                  "param@min_severity": ""
+                },
+                "version": "1.0.0",
+                "connector": "harfanglab-edr",
+                "operation": "fetch_security_events",
+                "operationTitle": "Fetches Security Events",
+                "pickFromTenant": false,
+                "step_variables": []
+              },
+              "status": null,
+              "top": "165",
+              "left": "125",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671",
+              "group": null,
+              "uuid": "969dc5c8-351f-405e-a60b-2125639788c9"
+            }
+          ],
+          "routes": [
+            {
+              "@type": "WorkflowRoute",
+              "name": "Incidents -> Search Endpoints",
+              "targetStep": "/api/3/workflow_steps/969dc5c8-351f-405e-a60b-2125639788c9",
+              "sourceStep": "/api/3/workflow_steps/949d8326-d5d8-4f84-b270-dbbb98d44673",
+              "label": null,
+              "isExecuted": false,
+              "uuid": "5d98dba5-5e58-498a-86ef-5b8cd6efbfed"
+            }
+          ],
+          "groups": [],
+          "priority": null,
+          "uuid": "37e82d8f-2276-49b0-a15a-fa0f661d9e0c",
+          "id": 587,
+          "owners": [],
+          "isPrivate": false,
+          "deletedAt": null,
+          "importedBy": [],
+          "recordTags": [
+            "harfanglab-edr"
+          ]
+        },
+        {
+          "@type": "Workflow",
+          "triggerLimit": null,
+          "name": "Search Multiple IoCs",
+          "aliasName": null,
+          "tag": "#Jira",
+          "description": "Search for multiple IoCs within HarfangLab telemetry",
+          "isActive": false,
+          "debug": false,
+          "singleRecordExecution": false,
+          "remoteExecutableFlag": false,
+          "parameters": [],
+          "synchronous": false,
+          "lastModifyDate": 1691142508,
+          "collection": "/api/3/workflow_collections/2d2435e8-8a42-4bd9-9130-ea496b906ad8",
+          "versions": [],
+          "triggerStep": "/api/3/workflow_steps/003de50a-09e6-4852-9972-27347b76b55b",
+          "steps": [
+            {
+              "@type": "WorkflowStep",
+              "name": "Incidents",
+              "description": null,
+              "arguments": {
+                "route": "e496af1d-30a0-4f5e-99eb-e1ae223629e1",
+                "title": "Jira: Add Comment",
+                "resources": [
+                  "incidents"
+                ],
+                "inputVariables": [],
+                "step_variables": {
+                  "input": {
+                    "params": [],
+                    "records": "{{vars.input.records}}"
+                  }
+                },
+                "displayConditions": {
+                  "incidents": {
+                    "sort": [],
+                    "limit": 30,
+                    "logic": "AND",
+                    "filters": []
+                  }
+                },
+                "executeButtonText": "Execute",
+                "noRecordExecution": true,
+                "singleRecordExecution": false
+              },
+              "status": null,
+              "top": "30",
+              "left": "125",
+              "stepType": "/api/3/workflow_step_types/f414d039-bb0d-4e59-9c39-a8f1e880b18a",
+              "group": null,
+              "uuid": "003de50a-09e6-4852-9972-27347b76b55b"
+            },
+            {
+              "@type": "WorkflowStep",
+              "name": "Search Multiple IoCs",
+              "description": null,
+              "arguments": {
+                "name": "HarfangLab EDR",
+                "config": "a0bd6760-7a99-48e2-acec-aaf422c8d707",
+                "params": {
+                  "param@iocs": "[\n  {\n    \"type\": \"md5\",\n    \"value\": \"25e49f426d475e01ecc763e3c433fbf4\"\n  }\n]",
+                  "param@limit": 10,
+                  "param@format": "markdown",
+                  "param@search_types": [
+                    "searchHash"
+                  ]
+                },
+                "version": "1.0.0",
+                "connector": "harfanglab-edr",
+                "operation": "search_multiple_iocs_in_telemetry",
+                "operationTitle": "Search Multiple IoCs",
+                "pickFromTenant": false,
+                "step_variables": []
+              },
+              "status": null,
+              "top": "165",
+              "left": "125",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671",
+              "group": null,
+              "uuid": "af4daade-ee66-43c8-8087-9cd684747f5c"
+            }
+          ],
+          "routes": [
+            {
+              "@type": "WorkflowRoute",
+              "name": "Incidents -> Search Endpoints",
+              "targetStep": "/api/3/workflow_steps/af4daade-ee66-43c8-8087-9cd684747f5c",
+              "sourceStep": "/api/3/workflow_steps/003de50a-09e6-4852-9972-27347b76b55b",
+              "label": null,
+              "isExecuted": false,
+              "uuid": "f3ac0636-0da5-4651-b2ee-863e08a5c5eb"
+            }
+          ],
+          "groups": [],
+          "priority": null,
+          "uuid": "3f2fdfd1-6109-4b19-9e6b-01673fc8b461",
+          "id": 593,
+          "owners": [],
+          "isPrivate": false,
+          "deletedAt": null,
+          "importedBy": [],
+          "recordTags": [
+            "harfanglab-edr"
+          ]
+        },
+        {
+          "@type": "Workflow",
+          "triggerLimit": null,
+          "name": "Search Endpoints",
+          "aliasName": null,
+          "tag": "#Jira",
+          "description": "Search endpoints with various filters",
+          "isActive": false,
+          "debug": false,
+          "singleRecordExecution": false,
+          "remoteExecutableFlag": false,
+          "parameters": [],
+          "synchronous": false,
+          "lastModifyDate": 1691135817,
+          "collection": "/api/3/workflow_collections/2d2435e8-8a42-4bd9-9130-ea496b906ad8",
+          "versions": [],
+          "triggerStep": "/api/3/workflow_steps/d97420fb-78f2-418a-a245-51e01523b7e1",
+          "steps": [
+            {
+              "@type": "WorkflowStep",
+              "name": "Search Endpoints",
+              "description": null,
+              "arguments": {
+                "name": "HarfangLab EDR",
+                "config": "a0bd6760-7a99-48e2-acec-aaf422c8d707",
+                "params": {
+                  "limit": 10,
+                  "Offset": 0,
+                  "fields": "",
+                  "ostype": "",
+                  "status": "",
+                  "hostname": "",
+                  "param@limit": 2,
+                  "param@Offset": "",
+                  "param@fields": "",
+                  "param@ostype": "",
+                  "param@status": "",
+                  "param@hostname": ""
+                },
+                "version": "1.0.0",
+                "connector": "harfanglab-edr",
+                "operation": "search_endpoint",
+                "operationTitle": "Search Endpoints",
+                "pickFromTenant": false,
+                "step_variables": []
+              },
+              "status": null,
+              "top": "165",
+              "left": "125",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671",
+              "group": null,
+              "uuid": "1e4e0514-5d38-4a90-9063-196cab3a7daa"
+            },
+            {
+              "@type": "WorkflowStep",
+              "name": "Incidents",
+              "description": null,
+              "arguments": {
+                "route": "6d67d5b6-8f5a-4410-ab6a-2ab0162247ab",
+                "title": "Jira: Add Comment",
+                "resources": [
+                  "incidents"
+                ],
+                "inputVariables": [],
+                "step_variables": {
+                  "input": {
+                    "params": [],
+                    "records": "{{vars.input.records}}"
+                  }
+                },
+                "displayConditions": {
+                  "incidents": {
+                    "sort": [],
+                    "limit": 30,
+                    "logic": "AND",
+                    "filters": []
+                  }
+                },
+                "executeButtonText": "Execute",
+                "noRecordExecution": true,
+                "singleRecordExecution": false
+              },
+              "status": null,
+              "top": "30",
+              "left": "125",
+              "stepType": "/api/3/workflow_step_types/f414d039-bb0d-4e59-9c39-a8f1e880b18a",
+              "group": null,
+              "uuid": "d97420fb-78f2-418a-a245-51e01523b7e1"
+            }
+          ],
+          "routes": [
+            {
+              "@type": "WorkflowRoute",
+              "name": "Incidents -> Search Endpoints",
+              "targetStep": "/api/3/workflow_steps/1e4e0514-5d38-4a90-9063-196cab3a7daa",
+              "sourceStep": "/api/3/workflow_steps/d97420fb-78f2-418a-a245-51e01523b7e1",
+              "label": null,
+              "isExecuted": false,
+              "uuid": "ae0c0d91-67c4-4008-8506-e7fa02dab5f2"
+            }
+          ],
+          "groups": [],
+          "priority": null,
+          "uuid": "86b86022-4819-4a6b-a3f7-2adbfae93f4d",
+          "id": 588,
+          "owners": [],
+          "isPrivate": false,
+          "deletedAt": null,
+          "importedBy": [],
+          "recordTags": [
+            "harfanglab-edr"
+          ]
+        },
+        {
+          "@type": "Workflow",
+          "triggerLimit": null,
+          "name": "Unisolate Endpoint",
+          "aliasName": null,
+          "tag": "#Jira",
+          "description": "Unisolate endpoint from network",
+          "isActive": false,
+          "debug": false,
+          "singleRecordExecution": false,
+          "remoteExecutableFlag": false,
+          "parameters": [],
+          "synchronous": false,
+          "lastModifyDate": 1691141656,
+          "collection": "/api/3/workflow_collections/2d2435e8-8a42-4bd9-9130-ea496b906ad8",
+          "versions": [],
+          "triggerStep": "/api/3/workflow_steps/0bed8a46-9eb0-4417-995b-e1bdffdda855",
+          "steps": [
+            {
+              "@type": "WorkflowStep",
+              "name": "Incidents",
+              "description": null,
+              "arguments": {
+                "route": "2c1a6314-8891-4c7d-a453-56bb6173eb77",
+                "title": "Jira: Add Comment",
+                "resources": [
+                  "incidents"
+                ],
+                "inputVariables": [],
+                "step_variables": {
+                  "input": {
+                    "params": [],
+                    "records": "{{vars.input.records}}"
+                  }
+                },
+                "displayConditions": {
+                  "incidents": {
+                    "sort": [],
+                    "limit": 30,
+                    "logic": "AND",
+                    "filters": []
+                  }
+                },
+                "executeButtonText": "Execute",
+                "noRecordExecution": true,
+                "singleRecordExecution": false
+              },
+              "status": null,
+              "top": "30",
+              "left": "125",
+              "stepType": "/api/3/workflow_step_types/f414d039-bb0d-4e59-9c39-a8f1e880b18a",
+              "group": null,
+              "uuid": "0bed8a46-9eb0-4417-995b-e1bdffdda855"
+            },
+            {
+              "@type": "WorkflowStep",
+              "name": "Unisolate Endpoint",
+              "description": null,
+              "arguments": {
+                "name": "HarfangLab EDR",
+                "config": "a0bd6760-7a99-48e2-acec-aaf422c8d707",
+                "params": {
+                  "param@agent_id": "qdqwdqd"
+                },
+                "version": "1.0.0",
+                "connector": "harfanglab-edr",
+                "operation": "unisolate_endpoint",
+                "operationTitle": "Unisolate an Endpoint",
+                "pickFromTenant": false,
+                "step_variables": []
+              },
+              "status": null,
+              "top": "165",
+              "left": "125",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671",
+              "group": null,
+              "uuid": "96fffc89-5eb2-4f67-a646-07dd48c7691e"
+            }
+          ],
+          "routes": [
+            {
+              "@type": "WorkflowRoute",
+              "name": "Incidents -> Search Endpoints",
+              "targetStep": "/api/3/workflow_steps/96fffc89-5eb2-4f67-a646-07dd48c7691e",
+              "sourceStep": "/api/3/workflow_steps/0bed8a46-9eb0-4417-995b-e1bdffdda855",
+              "label": null,
+              "isExecuted": false,
+              "uuid": "1f375243-3377-4aae-97dd-1f260a69970d"
+            }
+          ],
+          "groups": [],
+          "priority": null,
+          "uuid": "8788de9a-f2b2-46cb-a5d1-788312d7fbc1",
+          "id": 591,
+          "owners": [],
+          "isPrivate": false,
+          "deletedAt": null,
+          "importedBy": [],
+          "recordTags": [
+            "harfanglab-edr"
+          ]
+        },
+        {
+          "@type": "Workflow",
+          "triggerLimit": null,
+          "name": "Isolate Endpoint",
+          "aliasName": null,
+          "tag": "#Jira",
+          "description": "Isolate endpoint from network",
+          "isActive": false,
+          "debug": false,
+          "singleRecordExecution": false,
+          "remoteExecutableFlag": false,
+          "parameters": [],
+          "synchronous": false,
+          "lastModifyDate": 1691141552,
+          "collection": "/api/3/workflow_collections/2d2435e8-8a42-4bd9-9130-ea496b906ad8",
+          "versions": [],
+          "triggerStep": "/api/3/workflow_steps/8b13d043-4872-4109-859e-b349037a2941",
+          "steps": [
+            {
+              "@type": "WorkflowStep",
+              "name": "Isolate Endpoint",
+              "description": null,
+              "arguments": {
+                "name": "HarfangLab EDR",
+                "config": "a0bd6760-7a99-48e2-acec-aaf422c8d707",
+                "params": {
+                  "param@agent_id": "qdqdqd"
+                },
+                "version": "1.0.0",
+                "connector": "harfanglab-edr",
+                "operation": "isolate_endpoint",
+                "operationTitle": "Isolate an Endpoint",
+                "pickFromTenant": false,
+                "step_variables": []
+              },
+              "status": null,
+              "top": "165",
+              "left": "125",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671",
+              "group": null,
+              "uuid": "1616efcb-b76d-48b3-9842-9d145c38d789"
+            },
+            {
+              "@type": "WorkflowStep",
+              "name": "Incidents",
+              "description": null,
+              "arguments": {
+                "route": "82751dc9-d26c-49e1-9890-4f64429015a4",
+                "title": "Jira: Add Comment",
+                "resources": [
+                  "incidents"
+                ],
+                "inputVariables": [],
+                "step_variables": {
+                  "input": {
+                    "params": [],
+                    "records": "{{vars.input.records}}"
+                  }
+                },
+                "displayConditions": {
+                  "incidents": {
+                    "sort": [],
+                    "limit": 30,
+                    "logic": "AND",
+                    "filters": []
+                  }
+                },
+                "executeButtonText": "Execute",
+                "noRecordExecution": true,
+                "singleRecordExecution": false
+              },
+              "status": null,
+              "top": "30",
+              "left": "125",
+              "stepType": "/api/3/workflow_step_types/f414d039-bb0d-4e59-9c39-a8f1e880b18a",
+              "group": null,
+              "uuid": "8b13d043-4872-4109-859e-b349037a2941"
+            }
+          ],
+          "routes": [
+            {
+              "@type": "WorkflowRoute",
+              "name": "Incidents -> Search Endpoints",
+              "targetStep": "/api/3/workflow_steps/1616efcb-b76d-48b3-9842-9d145c38d789",
+              "sourceStep": "/api/3/workflow_steps/8b13d043-4872-4109-859e-b349037a2941",
+              "label": null,
+              "isExecuted": false,
+              "uuid": "15129f97-d777-47f2-a208-517407e9fd05"
+            }
+          ],
+          "groups": [],
+          "priority": null,
+          "uuid": "959f1e73-8035-4022-b1b7-ede849e7e76e",
+          "id": 590,
+          "owners": [],
+          "isPrivate": false,
+          "deletedAt": null,
+          "importedBy": [],
+          "recordTags": [
+            "harfanglab-edr"
+          ]
+        },
+        {
+          "@type": "Workflow",
+          "triggerLimit": null,
+          "name": "Get Event By ID",
+          "aliasName": null,
+          "tag": "#Jira",
+          "description": "Fetch Event By ID",
+          "isActive": false,
+          "debug": false,
+          "singleRecordExecution": false,
+          "remoteExecutableFlag": false,
+          "parameters": [],
+          "synchronous": false,
+          "lastModifyDate": 1691136056,
+          "collection": "/api/3/workflow_collections/2d2435e8-8a42-4bd9-9130-ea496b906ad8",
+          "versions": [],
+          "triggerStep": "/api/3/workflow_steps/8fec3389-c1e6-4c3e-b0a3-bd2fc27d91f0",
+          "steps": [
+            {
+              "@type": "WorkflowStep",
+              "name": "Incidents",
+              "description": null,
+              "arguments": {
+                "route": "bfcaf880-7b07-4bce-9613-cea507423e68",
+                "title": "Jira: Add Comment",
+                "resources": [
+                  "incidents"
+                ],
+                "inputVariables": [],
+                "step_variables": {
+                  "input": {
+                    "params": [],
+                    "records": "{{vars.input.records}}"
+                  }
+                },
+                "displayConditions": {
+                  "incidents": {
+                    "sort": [],
+                    "limit": 30,
+                    "logic": "AND",
+                    "filters": []
+                  }
+                },
+                "executeButtonText": "Execute",
+                "noRecordExecution": true,
+                "singleRecordExecution": false
+              },
+              "status": null,
+              "top": "30",
+              "left": "125",
+              "stepType": "/api/3/workflow_step_types/f414d039-bb0d-4e59-9c39-a8f1e880b18a",
+              "group": null,
+              "uuid": "8fec3389-c1e6-4c3e-b0a3-bd2fc27d91f0"
+            },
+            {
+              "@type": "WorkflowStep",
+              "name": "Get Event By ID",
+              "description": null,
+              "arguments": {
+                "name": "HarfangLab EDR",
+                "config": "a0bd6760-7a99-48e2-acec-aaf422c8d707",
+                "params": {
+                  "param@event_id": "lujfl4kBCWge90iwCywS"
+                },
+                "version": "1.0.0",
+                "connector": "harfanglab-edr",
+                "operation": "get_event_by_id",
+                "operationTitle": "Get Event By ID",
+                "pickFromTenant": false,
+                "step_variables": []
+              },
+              "status": null,
+              "top": "165",
+              "left": "125",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671",
+              "group": null,
+              "uuid": "ac29c11b-2d9e-4465-9fff-6fd19bebf779"
+            }
+          ],
+          "routes": [
+            {
+              "@type": "WorkflowRoute",
+              "name": "Incidents -> Search Endpoints",
+              "targetStep": "/api/3/workflow_steps/ac29c11b-2d9e-4465-9fff-6fd19bebf779",
+              "sourceStep": "/api/3/workflow_steps/8fec3389-c1e6-4c3e-b0a3-bd2fc27d91f0",
+              "label": null,
+              "isExecuted": false,
+              "uuid": "243fe03a-25d3-4ad0-a94e-86df1609d484"
+            }
+          ],
+          "groups": [],
+          "priority": null,
+          "uuid": "9e429eac-5254-4709-a7ed-33168f4103d7",
+          "id": 589,
+          "owners": [],
+          "isPrivate": false,
+          "deletedAt": null,
+          "importedBy": [],
+          "recordTags": [
+            "harfanglab-edr"
+          ]
+        },
+        {
+          "@type": "Workflow",
+          "triggerLimit": null,
+          "name": "Change Security Event Status",
+          "aliasName": null,
+          "tag": "#Jira",
+          "description": "Change Security Event Status",
+          "isActive": false,
+          "debug": false,
+          "singleRecordExecution": false,
+          "remoteExecutableFlag": false,
+          "parameters": [],
+          "synchronous": false,
+          "lastModifyDate": 1691142321,
+          "collection": "/api/3/workflow_collections/2d2435e8-8a42-4bd9-9130-ea496b906ad8",
+          "versions": [],
+          "triggerStep": "/api/3/workflow_steps/71561fa8-4303-4951-9a95-9a349ebfcaaa",
+          "steps": [
+            {
+              "@type": "WorkflowStep",
+              "name": "Change Security Event Status",
+              "description": null,
+              "arguments": {
+                "name": "HarfangLab EDR",
+                "config": "a0bd6760-7a99-48e2-acec-aaf422c8d707",
+                "params": {
+                  "param@status": "New",
+                  "param@security_event_id": "lujfl4kBCWge90iwCywS"
+                },
+                "version": "1.0.0",
+                "connector": "harfanglab-edr",
+                "operation": "change_security_event_status",
+                "operationTitle": "Change Security Event Status",
+                "pickFromTenant": false,
+                "step_variables": []
+              },
+              "status": null,
+              "top": "165",
+              "left": "125",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671",
+              "group": null,
+              "uuid": "0c21e72c-c951-41d1-9e8c-8cf29e9d55ec"
+            },
+            {
+              "@type": "WorkflowStep",
+              "name": "Incidents",
+              "description": null,
+              "arguments": {
+                "route": "8a14d2db-f390-4808-81b4-74b244a1d218",
+                "title": "Jira: Add Comment",
+                "resources": [
+                  "incidents"
+                ],
+                "inputVariables": [],
+                "step_variables": {
+                  "input": {
+                    "params": [],
+                    "records": "{{vars.input.records}}"
+                  }
+                },
+                "displayConditions": {
+                  "incidents": {
+                    "sort": [],
+                    "limit": 30,
+                    "logic": "AND",
+                    "filters": []
+                  }
+                },
+                "executeButtonText": "Execute",
+                "noRecordExecution": true,
+                "singleRecordExecution": false
+              },
+              "status": null,
+              "top": "30",
+              "left": "125",
+              "stepType": "/api/3/workflow_step_types/f414d039-bb0d-4e59-9c39-a8f1e880b18a",
+              "group": null,
+              "uuid": "71561fa8-4303-4951-9a95-9a349ebfcaaa"
+            }
+          ],
+          "routes": [
+            {
+              "@type": "WorkflowRoute",
+              "name": "Incidents -> Search Endpoints",
+              "targetStep": "/api/3/workflow_steps/0c21e72c-c951-41d1-9e8c-8cf29e9d55ec",
+              "sourceStep": "/api/3/workflow_steps/71561fa8-4303-4951-9a95-9a349ebfcaaa",
+              "label": null,
+              "isExecuted": false,
+              "uuid": "748ba0a4-f849-4fb4-9076-ca788183290c"
+            }
+          ],
+          "groups": [],
+          "priority": null,
+          "uuid": "e5b591ce-ee64-4c20-b1dc-dcc861471b58",
+          "id": 592,
+          "owners": [],
+          "isPrivate": false,
+          "deletedAt": null,
+          "importedBy": [],
+          "recordTags": [
+            "harfanglab-edr"
+          ]
+        }
+      ]
+    }
+  ],
+  "exported_tags": [
+    "harfanglab-edr"
+  ]
+}
