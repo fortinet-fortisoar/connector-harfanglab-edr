@@ -181,7 +181,7 @@
               "value":""
            },
            {
-              "title":"Alert Status",
+              "title":"Severity",
               "description":"The minimum severity of alerts to fetch (Informational or None for Informational and higher, Low for Low and higher, Medium for Medium and higer, High for High and higher, Critical for Critical)",
               "tooltip":"The minimum severity of alerts to fetch (Informational or None for Informational and higher, Low for Low and higher, Medium for Medium and higer, High for High and higher, Critical for Critical)",
               "required":false,
@@ -373,7 +373,7 @@
               ],
               "name":"param@search_types",
               "placeholder":"",
-              "value":"markdown"
+              "value":""
            },
            {
               "title":"Output Format",
