@@ -1,0 +1,409 @@
+{
+  "name":"harfanglab-edr",
+  "label":"HarfangLab EDR",
+  "description":"The connector allows FortiSOAR users to fetch data and take actions on Hurukai HarfangLab EDR platform",
+  "publisher":"Naili.M",
+  "cs_approved":false,
+  "cs_compatible":true,
+  "version":"1.0.0",
+  "category":"Endpoint Security",
+  "icon_small_name":"small.png",
+  "icon_large_name":"large.png",
+  "help_online":"https://docs.fortinet.com/document/fortisoar",
+  "configuration":{
+     "fields":[
+        {
+           "title":"Server URL",
+           "description":"URL for the HarfangLab EDR server from where the connector gets notifications.",
+           "required":true,
+           "editable":true,
+           "visible":true,
+           "placeholder":"https://09763116absc123cc.hurukai.io:8443",
+           "type":"text",
+           "name":"config@base_url"
+        },
+        {
+           "title":"API Key",
+           "description":"API Token configured for your account to access the HarfangLab EDR platform.",
+           "required":true,
+           "editable":true,
+           "visible":true,
+           "type":"password",
+           "name":"config@api_key"
+        },
+        {
+           "title":"Verify SSL",
+           "description":"Specifies whether the SSL certificate for the server is to be verified or not.Defaults to True.",
+           "required":false,
+           "editable":true,
+           "visible":true,
+           "type":"checkbox",
+           "name":"config@verify_certificate",
+           "value":true
+        }
+     ]
+  },
+  "operations":[
+     {
+        "operation":"search_endpoint",
+        "title":"Search Endpoints",
+        "description":"Search an endpoint in HarfangLab EDR manager.",
+        "category":"investigation",
+        "annotation":"search_endpoint",
+        "output_schema":"",
+        "enabled":true,
+        "parameters":[
+           {
+              "title":"Hostname",
+              "description":"The machine hostname to find",
+              "tooltip":"The machine hostname to find",
+              "required":false,
+              "editable":true,
+              "visible":true,
+              "type":"text",
+              "name":"param@hostname",
+              "placeholder":"",
+              "value":""
+           },
+           {
+              "title":"OS Type",
+              "description":"Filter by Operating System type",
+              "tooltip":"Filter by Operating System type",
+              "required":false,
+              "editable":true,
+              "visible":true,
+              "type":"text",
+              "name":"param@ostype",
+              "placeholder":"",
+              "value":""
+           },
+           {
+              "title":"Status",
+              "description":"Filter by status",
+              "tooltip":"Filter by status",
+              "required":false,
+              "editable":true,
+              "visible":true,
+              "type":"select",
+              "options":[
+                 "offline",
+                 "online"
+              ],
+              "name":"param@status",
+              "placeholder":"",
+              "value":""
+           },
+           {
+              "title":"Select Fields",
+              "description":"Return only these fields",
+              "tooltip":"Return only these fields",
+              "required":false,
+              "editable":true,
+              "visible":true,
+              "type":"json",
+              "name":"param@fields",
+              "placeholder":"",
+              "value":""
+           },
+           {
+              "title":"Records To Skip",
+              "description":"Start fetching from this record index",
+              "tooltip":"Start fetching from this record index",
+              "required":false,
+              "editable":true,
+              "visible":true,
+              "type":"integer",
+              "name":"param@offset",
+              "placeholder":"",
+              "value":0
+           },
+           {
+              "title":"Max Records",
+              "description":"Maximum records count to fetch",
+              "tooltip":"Maximum records count to fetch",
+              "required":false,
+              "editable":true,
+              "visible":true,
+              "type":"integer",
+              "name":"param@limit",
+              "placeholder":"",
+              "value":10
+           }
+        ]
+     },
+     {
+        "operation":"fetch_security_events",
+        "title":"Fetch Security Events",
+        "description":"Fetches security events from a HarfangLab EDR manager.",
+        "category":"investigation",
+        "annotation":"fetch_security_events",
+        "output_schema":"",
+        "enabled":true,
+        "parameters":[
+           {
+              "title":"Fetch Since",
+              "description":"The number of days to look back for alerts",
+              "tooltip":"The number of days to look back for alerts",
+              "required":false,
+              "editable":true,
+              "visible":true,
+              "type":"integer",
+              "name":"param@first_fetch",
+              "placeholder":"",
+              "value":""
+           },
+           {
+              "title":"Alert Status",
+              "description":"Status of alerts to fetch (ACTIVE for alerts in the new, probable_false_positive or investigating statuses, CLOSED for alerts in the closed or false_positive states, leave it empty for all alerts",
+              "tooltip":"Status of alerts to fetch (ACTIVE for alerts in the new, probable_false_positive or investigating statuses, CLOSED for alerts in the closed or false_positive states, leave it empty for all alerts",
+              "required":false,
+              "editable":true,
+              "visible":true,
+              "type":"select",
+              "options":[
+                 "ACTIVE",
+                 "CLOSED"
+              ],
+              "name":"param@alert_status",
+              "placeholder":"",
+              "value":""
+           },
+           {
+              "title":"Alert Type",
+              "description":"A comma-separated list of alert types (e.g: sigma,yara,hlai) or leave it empty to fetch all types",
+              "tooltip":"A comma-separated list of alert types (e.g: sigma,yara,hlai) or leave it empty to fetch all types",
+              "required":false,
+              "editable":true,
+              "visible":true,
+              "type":"text",
+              "name":"param@alert_type",
+              "placeholder":"sigma,yara,hlai,ioc,ransom... (or leave it empty to fetch all types)",
+              "value":""
+           },
+           {
+              "title":"Severity",
+              "description":"The minimum severity of alerts to fetch (Informational or None for Informational and higher, Low for Low and higher, Medium for Medium and higer, High for High and higher, Critical for Critical)",
+              "tooltip":"The minimum severity of alerts to fetch (Informational or None for Informational and higher, Low for Low and higher, Medium for Medium and higer, High for High and higher, Critical for Critical)",
+              "required":false,
+              "editable":true,
+              "visible":true,
+              "type":"select",
+              "options":[
+                 "Informational",
+                 "Low",
+                 "Medium",
+                 "High",
+                 "Critical"
+              ],
+              "name":"param@min_severity",
+              "placeholder":"",
+              "value":""
+           },
+           {
+              "title":"Max Records",
+              "description":"The maximum number of alerts to fetch (leave it empty to remove the limit)",
+              "tooltip":"The maximum number of alerts to fetch (leave it empty to remove the limit)",
+              "required":false,
+              "editable":true,
+              "visible":true,
+              "type":"integer",
+              "name":"param@max_fetch",
+              "placeholder":"",
+              "value":10
+           },
+           {
+              "title":"Delay",
+              "description":"Number of seconds back in the past for the upper limit of security event timestamps (keep a value of minimum 120 secondes). If Fetch Since determines the oldest event to fetch, Last Fetch detrmines the most recent",
+              "tooltip":"Number of seconds back in the past for the upper limit of security event timestamps (keep a value of minimum 120 secondes). If Fetch Since determines the oldest event to fetch, Last Fetch detrmines the most recent",
+              "required":false,
+              "editable":true,
+              "visible":true,
+              "type":"integer",
+              "name":"param@delay",
+              "placeholder":"",
+              "value":0
+           }
+        ]
+     },
+     {
+        "operation":"get_event_by_id",
+        "title":"Get Event By ID",
+        "description":"Get a security event by its ID",
+        "category":"investigation",
+        "annotation":"get_event_by_id",
+        "output_schema":"",
+        "enabled":true,
+        "parameters":[
+           {
+              "title":"Event ID",
+              "description":"ID of the event to fetch",
+              "tooltip":"ID of the event to fetch",
+              "required":true,
+              "editable":true,
+              "visible":true,
+              "type":"text",
+              "name":"param@event_id",
+              "placeholder":"lujfl4kBCWge90iwCywS",
+              "value":""
+           }
+        ]
+     },
+     {
+        "operation":"isolate_endpoint",
+        "title":"Isolate an Endpoint",
+        "description":"Isolate the target endpoint from the network",
+        "category":"response",
+        "annotation":"isolate_endpoint",
+        "output_schema":"",
+        "enabled":true,
+        "parameters":[
+           {
+              "title":"Agent ID",
+              "description":"ID of the agent to isolate",
+              "tooltip":"ID of the agent to isolate",
+              "required":true,
+              "editable":true,
+              "visible":true,
+              "type":"text",
+              "name":"param@agent_id",
+              "placeholder":"00617024-17d6-4eb1-a3bd-2857347b025a",
+              "value":""
+           }
+        ]
+     },
+     {
+        "operation":"unisolate_endpoint",
+        "title":"Unisolate an Endpoint",
+        "description":"Unisolate the target endpoint from the network",
+        "category":"response",
+        "annotation":"unisolate_endpoint",
+        "output_schema":"",
+        "enabled":true,
+        "parameters":[
+           {
+              "title":"Agent ID",
+              "description":"ID of the agent to unisolate",
+              "tooltip":"ID of the agent to unisolate",
+              "required":true,
+              "editable":true,
+              "visible":true,
+              "type":"text",
+              "name":"param@agent_id",
+              "placeholder":"00617024-17d6-4eb1-a3bd-2857347b025a",
+              "value":""
+           }
+        ]
+     },
+     {
+        "operation":"change_security_event_status",
+        "title":"Change Security Event Status",
+        "description":"Changes the status of a security event",
+        "category":"incident_management",
+        "annotation":"change_security_event_status",
+        "output_schema":"",
+        "enabled":true,
+        "parameters":[
+           {
+              "title":"Event ID",
+              "description":"ID or list of IDs of the event(s) to change the status for",
+              "tooltip":"ID or list of IDs of the event(s) to change the status for",
+              "required":true,
+              "editable":true,
+              "visible":true,
+              "type":"text",
+              "name":"param@security_event_id",
+              "placeholder":"lujfl4kBCWge90iwCywS",
+              "value":""
+           },
+           {
+              "title":"Event Status",
+              "description":"Status of alerts to fetch (ACTIVE for alerts in the new, probable_false_positive or investigating statuses, CLOSED for alerts in the closed or false_positive states, leave it empty for all alerts",
+              "tooltip":"Status of alerts to fetch (ACTIVE for alerts in the new, probable_false_positive or investigating statuses, CLOSED for alerts in the closed or false_positive states, leave it empty for all alerts",
+              "required":true,
+              "editable":true,
+              "visible":true,
+              "type":"select",
+              "options":[
+                 "New",
+                 "Investigating",
+                 "False Positive",
+                 "Closed"
+              ],
+              "name":"param@status",
+              "placeholder":"",
+              "value":""
+           }
+        ]
+     },
+     {
+        "operation":"search_multiple_iocs_in_telemetry",
+        "title":"Search Multiple IoCs",
+        "description":"Search multiple IOCs in HarfangLab telemetry and returns search results",
+        "category":"incident_management",
+        "annotation":"search_multiple_iocs_in_telemetry",
+        "output_schema":"",
+        "enabled":true,
+        "parameters":[
+           {
+              "title":"IoCs",
+              "description":"The IOCs to search in the following format [{'type': 'md5', value: '1234567890ABCDEF1234567890ABCDEF'}, ...] (ip, hash, filename...)",
+              "tooltip":"The IOCs to search in the following format [{'type': 'md5', value: '1234567890ABCDEF1234567890ABCDEF'}, ...] (ip, hash, filename...)",
+              "required":true,
+              "editable":true,
+              "visible":true,
+              "type":"json",
+              "name":"param@iocs",
+              "placeholder":"[{'type': 'md5', value: '1234567890ABCDEF1234567890ABCDEF'}, ...]",
+              "value":""
+           },
+           {
+              "title":"Search Types",
+              "description":"Indicates which types of search to perform",
+              "tooltip":"Indicates which types of search to perform",
+              "required":true,
+              "editable":true,
+              "visible":true,
+              "type":"multiselect",
+              "options":[
+                 "searchHash",
+                 "searchSourceIP",
+                 "searchDestinationIP",
+                 "searchDriverByFileName",
+                 "searchDriverByHash"
+              ],
+              "name":"param@search_types",
+              "placeholder":"",
+              "value":""
+           },
+           {
+              "title":"Output Format",
+              "description":"The output format (either MARKDOWN or HTML)",
+              "tooltip":"The output format (either MARKDOWN or HTML)",
+              "required":true,
+              "editable":true,
+              "visible":true,
+              "type":"select",
+              "options":[
+                 "html",
+                 "markdown"
+              ],
+              "name":"param@format",
+              "placeholder":"",
+              "value":"markdown"
+           },
+           {
+              "title":"Limit",
+              "description":"Limits the number of hit results for each IOC to this number.",
+              "tooltip":"Limits the number of hit results for each IOC to this number.",
+              "required":true,
+              "editable":true,
+              "visible":true,
+              "type":"integer",
+              "name":"param@limit",
+              "placeholder":"00617024-17d6-4eb1-a3bd-2857347b025a",
+              "value":10
+           }
+        ]
+     }
+  ]
+}
