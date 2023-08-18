@@ -6,6 +6,10 @@
   "cs_approved":false,
   "cs_compatible":true,
   "version":"1.0.0",
+  "ingestion_supported": true,
+  "ingestion_modes": [
+      "scheduled"
+  ],   
   "category":"Endpoint Security",
   "icon_small_name":"small.png",
   "icon_large_name":"large.png",
@@ -142,8 +146,8 @@
         "parameters":[
            {
               "title":"Fetch Since",
-              "description":"The number of days to look back for alerts",
-              "tooltip":"The number of days to look back for alerts",
+              "description":"The number of minutes to look back for alerts",
+              "tooltip":"The number of minutes to look back for alerts",
               "required":false,
               "editable":true,
               "visible":true,
