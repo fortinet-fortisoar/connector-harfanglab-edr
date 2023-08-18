@@ -2,7 +2,7 @@
   "name":"harfanglab-edr",
   "label":"HarfangLab EDR",
   "description":"The connector allows FortiSOAR users to fetch data and take actions on Hurukai HarfangLab EDR platform",
-  "publisher":"Naili.M",
+  "publisher":"Fortinet CSE",
   "cs_approved":false,
   "cs_compatible":true,
   "version":"1.0.0",
@@ -13,7 +13,7 @@
   "category":"Endpoint Security",
   "icon_small_name":"small.png",
   "icon_large_name":"large.png",
-  "help_online":"https://docs.fortinet.com/document/fortisoar",
+  "help_online":"https://github.com/fortinet-fortisoar/connector-harfanglab-edr/blob/release/1.0.0/docs/HarfangLabEDRConnectorDoc.md",
   "configuration":{
      "fields":[
         {
