@@ -2,7 +2,7 @@
   "name":"harfanglab-edr",
   "label":"HarfangLab EDR",
   "description":"The connector allows FortiSOAR users to fetch data and take actions on Hurukai HarfangLab EDR platform",
-  "publisher":"Fortinet CSE",
+  "publisher":"Naili.M",
   "cs_approved":false,
   "cs_compatible":true,
   "version":"1.0.0",
