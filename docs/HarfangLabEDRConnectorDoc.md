@@ -4,17 +4,16 @@ The connector allows FortiSOAR users to fetch data and take actions on Hurukai H
 
 ### Version information
 
-Connector Version: 1.0.0
+Connector Version: 1.1.0
 
 
 Authored By: Naili.M
 
 Certified: No
-## Release Notes for version 1.0.0
-Following enhancements have been made to the HarfangLab EDR Connector in version 1.0.0:
+## Release Notes for version 1.1.0
+Following enhancements have been made to the HarfangLab EDR Connector in version 1.1.0:
 <ul>
-<li>Initial Release</li>
-<li>Tested on 7.4.1</li>
+<li>Added Data Ingestion Support. </li>
 </ul>
 
 ## Installing the connector
@@ -66,7 +65,7 @@ The output contains the following populated JSON schema:
 The output contains a non-dictionary value.
 ### operation: Fetch Security Events
 #### Input parameters
-<table border=1><thead><tr><th>Parameter</th><th>Description</th></tr></thead><tbody><tr><td>Fetch Since</td><td>The number of days to look back for alerts
+<table border=1><thead><tr><th>Parameter</th><th>Description</th></tr></thead><tbody><tr><td>Fetch Since</td><td>The number of minutes to look back for alerts
 </td></tr><tr><td>Alert Status</td><td>Status of alerts to fetch (ACTIVE for alerts in the new, probable_false_positive or investigating statuses, CLOSED for alerts in the closed or false_positive states, leave it empty for all alerts
 </td></tr><tr><td>Alert Type</td><td>A comma-separated list of alert types (e.g: sigma,yara,hlai) or leave it empty to fetch all types
 </td></tr><tr><td>Severity</td><td>The minimum severity of alerts to fetch (Informational or None for Informational and higher, Low for Low and higher, Medium for Medium and higer, High for High and higher, Critical for Critical)
@@ -91,6 +90,7 @@ The output contains a non-dictionary value.
 #### Input parameters
 <table border=1><thead><tr><th>Parameter</th><th>Description</th></tr></thead><tbody><tr><td>Agent ID</td><td>ID of the agent to isolate
 </td></tr></tbody></table>
+
 #### Output
 The output contains the following populated JSON schema:
 
@@ -127,14 +127,20 @@ The output contains the following populated JSON schema:
 
 The output contains a non-dictionary value.
 ## Included playbooks
-The `Sample - harfanglab-edr - 1.0.0` playbook collection comes bundled with the HarfangLab EDR connector. These playbooks contain steps using which you can perform all supported actions. You can see bundled playbooks in the **Automation** > **Playbooks** section in FortiSOAR&trade; after importing the HarfangLab EDR connector.
+The `Sample - harfanglab-edr - 1.1.0` playbook collection comes bundled with the HarfangLab EDR connector. These playbooks contain steps using which you can perform all supported actions. You can see bundled playbooks in the **Automation** > **Playbooks** section in FortiSOAR&trade; after importing the HarfangLab EDR connector.
 
+- > HarfangLabEDR > Fetch
 - Change Security Event Status
 - Fetch Security events
 - Get Event By ID
+- HarfangLabEDR> Ingest
 - Isolate Endpoint
 - Search Endpoints
 - Search Multiple IoCs
 - Unisolate Endpoint
 
 **Note**: If you are planning to use any of the sample playbooks in your environment, ensure that you clone those playbooks and move them to a different collection since the sample playbook collection gets deleted during connector upgrade and delete.
+## Data Ingestion Support
+Use the Data Ingestion Wizard to easily ingest data into FortiSOAR&trade; by pulling events/alerts/incidents, based on the requirement.
+
+**TODO:** provide the list of steps to configure the ingestion with the screen shots and limitations if any in this section.
