@@ -1026,7 +1026,7 @@ class HarfangLabConnector:
        Fetches security events from a HarfangLab EDR manager
 
        :type first_fetch: ``int``
-       :param first_fetch: The number of days to look back for alerts
+       :param first_fetch: The number of minutes to look back for alerts
 
        :type alert_status: ``str``
        :param alert_status: Status of alerts to fetch ('ACTIVE' for alerts in the new, probable_false_positive or investigating statuses, 'CLOSED' for alerts in the closed or false_positive states, None for all alerts
@@ -1058,7 +1058,7 @@ class HarfangLabConnector:
         url = f'{self.base_url}/api/data/alert/alert/Alert/'
         last_fetch = None
         max_results = None
-        days = 0
+        minutes = 0
         excluded_rules = set()
 
         if exclude_rules:
@@ -1066,12 +1066,12 @@ class HarfangLabConnector:
 
         if first_fetch:
             try:
-                days = int(first_fetch)
+                minutes = int(first_fetch)
             except Exception as e:
-                days = 0
+                minutes = 0
 
         first_fetch_time = int(datetime.timestamp(
-            datetime.now() - timedelta(days=days)) * 1000000)
+            datetime.now() - timedelta(minutes=minutes)) * 1000000)
 
         if not min_severity:
             min_severity = HarfangLabConnector.SEVERITIES[0]
