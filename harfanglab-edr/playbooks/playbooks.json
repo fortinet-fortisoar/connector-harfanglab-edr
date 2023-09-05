@@ -3,7 +3,7 @@
   "data": [
     {
       "@type": "WorkflowCollection",
-      "name": "Sample - HarfangLab EDR - 1.0.0",
+      "name": "Sample - HarfangLab EDR - 1.1.0",
       "description": "Sample playbooks for \"HarfangLab EDR\" connector. If you are planning to use any of the sample playbooks in your environment, ensure that you clone those playbooks and move them to a different collection, since the sample playbook collection gets deleted during connector upgrade and delete.",
       "visible": true,
       "id": 70,
@@ -44,7 +44,7 @@
                   "param@alert_status": "",
                   "param@min_severity": ""
                 },
-                "version": "1.0.0",
+                "version": "1.1.0",
                 "connector": "harfanglab-edr",
                 "operation": "fetch_security_events",
                 "operationTitle": "Fetches Security Events",
@@ -188,7 +188,7 @@
                     "searchHash"
                   ]
                 },
-                "version": "1.0.0",
+                "version": "1.1.0",
                 "connector": "harfanglab-edr",
                 "operation": "search_multiple_iocs_in_telemetry",
                 "operationTitle": "Search Multiple IoCs",
@@ -303,7 +303,7 @@
                   "param@status": "",
                   "param@hostname": ""
                 },
-                "version": "1.0.0",
+                "version": "1.1.0",
                 "connector": "harfanglab-edr",
                 "operation": "search_endpoint",
                 "operationTitle": "Search Endpoints",
@@ -406,7 +406,7 @@
                 "params": {
                   "param@agent_id": "qdqwdqd"
                 },
-                "version": "1.0.0",
+                "version": "1.1.0",
                 "connector": "harfanglab-edr",
                 "operation": "unisolate_endpoint",
                 "operationTitle": "Unisolate an Endpoint",
@@ -509,7 +509,7 @@
                 "params": {
                   "param@agent_id": "qdqdqd"
                 },
-                "version": "1.0.0",
+                "version": "1.1.0",
                 "connector": "harfanglab-edr",
                 "operation": "isolate_endpoint",
                 "operationTitle": "Isolate an Endpoint",
@@ -576,7 +576,7 @@
                 "params": {
                   "param@event_id": "lujfl4kBCWge90iwCywS"
                 },
-                "version": "1.0.0",
+                "version": "1.1.0",
                 "connector": "harfanglab-edr",
                 "operation": "get_event_by_id",
                 "operationTitle": "Get Event By ID",
@@ -705,7 +705,7 @@
                   "param@alert_status": "{{vars.alert_status}}",
                   "param@min_severity": "{{vars.min_severity}}"
                 },
-                "version": "1.0.0",
+                "version": "1.1.0",
                 "connector": "harfanglab-edr",
                 "operation": "fetch_security_events",
                 "operationTitle": "Fetch Security Events",
@@ -1213,7 +1213,7 @@
                   "param@status": "New",
                   "param@security_event_id": "lujfl4kBCWge90iwCywS"
                 },
-                "version": "1.0.0",
+                "version": "1.1.0",
                 "connector": "harfanglab-edr",
                 "operation": "change_security_event_status",
                 "operationTitle": "Change Security Event Status",
