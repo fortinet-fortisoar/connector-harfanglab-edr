@@ -141,6 +141,36 @@ The `Sample - harfanglab-edr - 1.1.0` playbook collection comes bundled with the
 
 **Note**: If you are planning to use any of the sample playbooks in your environment, ensure that you clone those playbooks and move them to a different collection since the sample playbook collection gets deleted during connector upgrade and delete.
 ## Data Ingestion Support
-Use the Data Ingestion Wizard to easily ingest data into FortiSOAR&trade; by pulling events/alerts/incidents, based on the requirement.
 
-**TODO:** provide the list of steps to configure the ingestion with the screen shots and limitations if any in this section.
+Use the Data Ingestion Wizard to easily ingest data into FortiSOAR™ by pulling events from HarfangLab EDR. Currently, "events" in HarfangLab EDR are mapped to "alerts" in FortiSOAR™. For more information on the Data Ingestion Wizard, see the "Connectors Guide" in the FortiSOAR™ product documentation. 
+
+Configure Data Ingestion
+You can configure data ingestion using the “Data Ingestion Wizard” to seamlessly map the incoming HarfangLab EDR "events" to FortiSOAR™ "Alerts".
+
+The Data Ingestion Wizard enables you to configure scheduled pulling of data from HarfangLab EDR into FortiSOAR™. It also lets you pull some sample data from HarfangLab EDR using which you can define the mapping of data between HarfangLab EDR and FortiSOAR™. The mapping of common fields is generally already done by the Data Ingestion Wizard; users mostly require to only map any custom fields that are added to the HarfangLab EDR events. 
+
+1.   To begin configuring data ingestion, click Configure Data Ingestion on the HarfangLab EDR connector’s "Configurations" page. 
+Click Let’s Start by fetching some data, to open the “Fetch Sample Data” screen.
+
+
+Sample data is required to create a field mapping between the HarfangLab EDR events data and FortiSOAR™. The sample data is pulled from connector actions or ingestion playbooks.
+2.  On the Fetch Data screen, provide the configurations required to fetch events from HarfangLab EDR. The fetched data is used to create a mapping between the HarfangLab EDR data and FortiSOAR™ alerts. 
+
+![](media/fetch.png)
+
+Once you have completed specifying the configurations, click Fetch Data.
+3.  On the Field Mapping screen, map the fields of the HarfangLab EDR events to the fields present in FortiSOAR™ alert module. To map a field, click the key in the sample data to add the “jinja” value of the field.
+
+![](media/mapping.png)
+
+For more information on field mapping, see the Data Ingestion chapter in the "Connectors Guide" in the FortiSOAR™ product documentation. Once you have completed mapping fields, click Save Mapping & Continue.
+4.  Use the Scheduling screen to configure schedule-based ingestion, i.e., specify the polling frequency to HarfangLab EDR, so that the content gets pulled from HarfangLab EDR integration into FortiSOAR™. On the Scheduling screen, from the Do you want to schedule the ingestion? drop-down list, select Yes. In the “Configure Schedule Settings” section, specify the Cron expression for the schedule. For example, if you want to pull data from HarfangLab EDR every 5 minutes, click Every X Minute, and in the minute box enter */5. This would mean that based on the configuration you have set up, data, i.e., events will be pulled from HarfangLab EDR every 5 minutes.
+
+
+![](media/scheduling.png)
+
+Once you have completed scheduling, click Save Settings & Continue.
+5.  The Summary screen displays a summary of the mapping done, and it also contains links to the Ingestion playbooks. Click Done to complete the data ingestion and exit the Data Ingestion Wizard.
+
+
+![](media/summary.png)
